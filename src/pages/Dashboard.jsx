@@ -3,10 +3,13 @@ import AdminDashboard from "../components/AdminDashboard";
 import CustomerSupport from "../components/CustomerSupport";
 import SupportChat from "../components/SupportChat";
 import UserDashboard from "../components/UserDashboard";
+import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
   const {user} = useUser();
+  const navigate = useNavigate();
   
+  if(!user) navigate("/sign-in");
   if (user.role === "admin") {
     return <AdminDashboard />;
   } else if (user.role === "resident") {
