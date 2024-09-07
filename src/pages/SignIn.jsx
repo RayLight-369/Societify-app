@@ -2,8 +2,11 @@ import { useState } from "react";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
+import { useNavigate } from "react-router-dom";
+import { useUser } from "@/Contexts/IsAuthenticated";
 
 const SignIn = () => {
+    const {setUser} = useUser();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -21,6 +24,9 @@ const SignIn = () => {
   };
 
   // Handle form submission
+
+  const  navigate = useNavigate()
+
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent default form submission behavior
     setIsSubmitting(true); // Disable submit button during submission
@@ -39,6 +45,11 @@ const SignIn = () => {
 
       if (response.ok) {
         console.log("User signed in successfully!");
+        const body = await response.json();
+
+        setUser(body.user);
+        navigate("/dashboard")
+
         // Optionally handle success, e.g., redirect to dashboard or store token
       } else {
         console.error("Failed to sign in:", response.statusText);
