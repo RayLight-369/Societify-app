@@ -1,4 +1,4 @@
-import { SupportChatComponent } from "./SupportChatComponent";
+import { SupportChatComponent } from "./SupportChatComponent.jsx";
 
 const SupportChat = () => {
   return (
