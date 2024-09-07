@@ -20,6 +20,7 @@ const UserDashboard = () => {
         <TableHeader>
           <TableRow>
             <TableHead className="text-left">Invoice</TableHead>
+            <TableHead className="text-left">Amount</TableHead>
             <TableHead>Due Date</TableHead>
             <TableHead className="">Status</TableHead>
             <TableHead className="">Download</TableHead>
@@ -28,6 +29,7 @@ const UserDashboard = () => {
         <TableBody>
           <TableRow className={true ? "bg-green-100" : "bg-red-100"}>
             <TableCell>INV-001</TableCell>
+            <TableCell>1234</TableCell>
             <TableCell>12/12/2021</TableCell>
             <TableCell className={!true ? "text-red-500" : "text-green-500"}>
               {!true ? "Unpaid" : "Paid"}
