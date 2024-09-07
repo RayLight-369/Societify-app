@@ -7,12 +7,4 @@ export const NavLinks = [
     name: "Dashboard",
     link: "/dashboard"
   },
-  {
-    name: "Sign In",
-    link: "/sign-in"
-  },
-  {
-    name: "Sign Up",
-    link: "/sign-up"
-  }
 ];
