@@ -9,7 +9,7 @@ const Navbar = () => {
         <div>
           <p>LOGO</p>
         </div>
-        <nav className="flex gap-10">
+        <nav className="flex gap-10 text-sm">
           {NavLinks.map((route, i) => (
             <NavLink to={route.link} key={i}>
               {route.name}
