@@ -12,11 +12,11 @@ const Navbar = () => {
           <NavLink to={"/"}>Societify</NavLink>
         </div>
         <nav className="flex gap-10 text-sm">
-          {NavLinks.map((route, i) => {
+          {NavLinks.map((route, i) => (
             <NavLink to={route.link} key={i}>
               {route.name}
-            </NavLink>;
-          })}
+            </NavLink>
+          ))}
           {user ? (
             <NavLink
               to="#"

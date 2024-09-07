@@ -1,9 +1,11 @@
 import { Button, buttonVariants } from "@/components/ui/button";
+import { useUser } from "@/Contexts/IsAuthenticated";
 import { cn } from "@/lib/utils";
 import React from "react";
 import { Link } from "react-router-dom";
 
 const Home = () => {
+  const { user } = useUser();
   return (
     <section id="home" className="w-screen h-fit min-h-screen relative top-0">
       <div
@@ -18,12 +20,21 @@ const Home = () => {
             Effortlessly manage, keep your group in line; Our app makes society
             management simply fine.
           </p>
-          <Link
-            to={"/dashboard"}
-            className={cn(buttonVariants(), "w-fit px-7")}
-          >
-            Dashboard
-          </Link>
+          {user ? (
+            <Link
+              to={"/dashboard"}
+              className={cn(buttonVariants(), "w-fit px-7")}
+            >
+              Dashboard
+            </Link>
+          ) : (
+            <Link
+              to={"/sign-in"}
+              className={cn(buttonVariants(), "w-fit px-7")}
+            >
+              Sign in
+            </Link>
+          )}
         </div>
       </div>
     </section>
