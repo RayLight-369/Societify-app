@@ -7,6 +7,7 @@ import SignUp from "./pages/SignUp";
 import IsAuthenticated from "./Contexts/IsAuthenticated";
 import BillView from "./components/BillView";
 import DataProvider from "./Contexts/Data";
+import GenerateBill from './components/GenerateBill';
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const ChildLayout = () => {
             <Route path="/sign-in" element={<SignIn />} />
             <Route path="/sign-up" element={<SignUp />} />
           <Route path="/bill/:id" element={<BillView />} />
+          <Route path="/generate-bill" element={<GenerateBill />} />
 
           </Route>
         </Routes>
