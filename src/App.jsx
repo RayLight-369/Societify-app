@@ -6,6 +6,7 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import IsAuthenticated from "./Contexts/IsAuthenticated";
 import BillView from "./components/BillView";
+import DataProvider from "./Contexts/Data";
 
 const App = () => {
   return (
@@ -18,15 +19,19 @@ const App = () => {
 const ChildLayout = () => {
   return (
     <IsAuthenticated>
-      <Routes>
-        <Route path="/" element={<Navbar />}>
-          <Route path="/" index element={<Home />} />
-          <Route path="dashboard" index element={<Dashboard />} />
-          <Route path="/sign-in" element={<SignIn />} />
-          <Route path="/sign-up" element={<SignUp />} />
+
+      <DataProvider>
+        <Routes>
+          <Route path="/" element={<Navbar />}>
+            <Route path="/" index element={<Home />} />
+            <Route path="dashboard" index element={<Dashboard />} />
+            <Route path="/sign-in" element={<SignIn />} />
+            <Route path="/sign-up" element={<SignUp />} />
           <Route path="/bill/:id" element={<BillView />} />
-        </Route>
-      </Routes>
+
+          </Route>
+        </Routes>
+      </DataProvider>
     </IsAuthenticated>
   );
 };

@@ -4,9 +4,12 @@ import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "@/Contexts/IsAuthenticated";
+import { useData } from "@/Contexts/Data";
+import Cookies from "js-cookie";
 
 const SignIn = () => {
-    const {setUser} = useUser();
+  const { setUser } = useUser();
+  const { setBills } = useData();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -25,7 +28,7 @@ const SignIn = () => {
 
   // Handle form submission
 
-  const  navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent default form submission behavior
@@ -48,7 +51,16 @@ const SignIn = () => {
         const body = await response.json();
 
         setUser(body.user);
-        navigate("/dashboard")
+
+        sessionStorage.setItem("user", JSON.stringify(body.user));
+
+        localStorage.setItem("user", JSON.stringify(body.user));
+
+        // const res = fetch("http://localhost:3000/bills/all")
+        //   .then((data) => data.json())
+        //   .then(console.log);
+
+        navigate("/dashboard");
 
         // Optionally handle success, e.g., redirect to dashboard or store token
       } else {
@@ -70,7 +82,10 @@ const SignIn = () => {
 
       {/* Email Field */}
       <div>
-        <Label htmlFor="email" className="block text-sm font-medium text-gray-700">
+        <Label
+          htmlFor="email"
+          className="block text-sm font-medium text-gray-700"
+        >
           Email
         </Label>
         <Input
@@ -86,7 +101,10 @@ const SignIn = () => {
 
       {/* Password Field */}
       <div>
-        <Label htmlFor="password" className="block text-sm font-medium text-gray-700">
+        <Label
+          htmlFor="password"
+          className="block text-sm font-medium text-gray-700"
+        >
           Password
         </Label>
         <Input

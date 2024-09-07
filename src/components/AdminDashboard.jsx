@@ -1,4 +1,4 @@
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -7,7 +7,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "./ui/table";
+} from "@/components/ui/table";
 
 const AdminDashboard = () => {
   return (
