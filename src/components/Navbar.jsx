@@ -9,7 +9,7 @@ const Navbar = () => {
     <>
       <header className="sticky min-h-[60px] bg-foreground text-background flex items-center justify-between px-8 py-1">
         <div>
-          <p>LOGO</p>
+          <NavLink to={"/"}>Societify</NavLink>
         </div>
         <nav className="flex gap-10 text-sm">
           {NavLinks.map((route, i) => {
@@ -18,14 +18,22 @@ const Navbar = () => {
             </NavLink>;
           })}
           {user ? (
-            <NavLink to="#" onClick={(e) => {
-              e.preventDefault();
-              sessionStorage.removeItem("user");
-              localStorage.removeItem("user");
-              setUser(null);
-            }}>Sign Out</NavLink>
+            <NavLink
+              to="#"
+              onClick={(e) => {
+                e.preventDefault();
+                sessionStorage.removeItem("user");
+                localStorage.removeItem("user");
+                setUser(null);
+              }}
+            >
+              Sign Out
+            </NavLink>
           ) : (
-            <NavLink to="/sign-in">Sign In</NavLink>
+            <>
+              <NavLink to="/sign-in">Sign In</NavLink>
+              <NavLink to="/sign-up">Sign Up</NavLink>
+            </>
           )}
         </nav>
       </header>

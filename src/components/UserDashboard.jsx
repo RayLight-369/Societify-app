@@ -38,7 +38,13 @@ const UserDashboard = () => {
             .filter((bill) => bill.email === user.email)
             .map((bill) => {
               return (
-                <TableRow className={bill?.status ? "bg-green-100 cursor-pointer hover:bg-green-200" : "bg-red-100 hover:bg-red-200 cursor-pointer"}>
+                <TableRow
+                  className={
+                    bill?.status
+                      ? "bg-green-100 cursor-pointer hover:bg-green-200"
+                      : "bg-red-100 hover:bg-red-200 cursor-pointer"
+                  }
+                >
                   <TableCell>{bill?.dueDate}</TableCell>
                   <TableCell>{bill?.amount}</TableCell>
                   <TableCell
@@ -49,7 +55,7 @@ const UserDashboard = () => {
                     {!bill?.status ? "Unpaid" : "Paid"}
                   </TableCell>
                   <TableCell>
-                    <div onClick={()=>navigate(`/bill/${bill._id}`)}>
+                    <div onClick={() => navigate(`/bill/${bill._id}`)}>
                       <Button variant={"outline"}>Download</Button>
                     </div>
                   </TableCell>
